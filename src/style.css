@@ -14,5 +14,15 @@ td {
 }
 
 .next-player {
+  font-size: 40px;
   line-height: 100px;
+}
+
+#app {
+  display: flex;
+  margin: 1rem;
+}
+
+.history {
+  padding: 10px;
 }
