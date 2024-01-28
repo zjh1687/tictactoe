@@ -28,6 +28,8 @@ export default class Game {
       this.board = new Board(domBoard, this);
       this.board.setCells(this.cells);
     }
+
+    this.nextPlay();
   }
 
   public clickBoard(row: number, col: number) {
@@ -40,5 +42,14 @@ export default class Game {
 
   public nextPlay() {
     this.bTurnX = !this.bTurnX;
+
+    const domNextPlayer = document.querySelector('.next-player');
+    if (domNextPlayer) {
+      domNextPlayer.innerHTML =
+        /*html */
+        `
+          Next Player: ${this.bTurnX ? 'X' : 'O'}
+      `;
+    }
   }
 }
