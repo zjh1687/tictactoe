@@ -1,8 +1,12 @@
+import Game from './Game';
+
 export default class Board {
   private domBoard: Element;
+  private game: Game;
 
-  constructor(domBoard: Element) {
+  constructor(domBoard: Element, game: Game) {
     this.domBoard = domBoard;
+    this.game = game;
   }
 
   public setCells(cells: string[][]) {
@@ -22,6 +26,9 @@ export default class Board {
       const row = parseInt(pos![0]);
       const col = parseInt(pos![1]);
       dom.innerHTML = cells[row][col];
+      dom.addEventListener('click', () => {
+        this.game.clickBoard(row, col);
+      });
     });
   }
 }

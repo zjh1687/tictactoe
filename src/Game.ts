@@ -24,8 +24,15 @@ export default class Game {
 
     const domBoard = document.querySelector('.board');
     if (domBoard) {
-      this.board = new Board(domBoard);
+      this.board = new Board(domBoard, this);
       this.board.setCells(this.cells);
     }
+  }
+
+  public clickBoard(row: number, col: number) {
+    if (this.cells[row][col] !== '') return;
+
+    this.cells[row][col] = 'X';
+    this.board?.setCells(this.cells);
   }
 }
