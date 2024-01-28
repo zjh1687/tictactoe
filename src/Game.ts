@@ -2,11 +2,12 @@ import Board from './Board';
 
 export default class Game {
   private board?: Board;
+  private bTurnX = false;
 
   private cells = [
-    ['x', '', ''],
-    ['', 'x', ''],
-    ['', 'x', ''],
+    ['', '', ''],
+    ['', '', ''],
+    ['', '', ''],
   ];
 
   constructor(domApp: Element) {
@@ -32,7 +33,12 @@ export default class Game {
   public clickBoard(row: number, col: number) {
     if (this.cells[row][col] !== '') return;
 
-    this.cells[row][col] = 'X';
+    this.cells[row][col] = this.bTurnX ? 'X' : 'O';
     this.board?.setCells(this.cells);
+    this.nextPlay();
+  }
+
+  public nextPlay() {
+    this.bTurnX = !this.bTurnX;
   }
 }
