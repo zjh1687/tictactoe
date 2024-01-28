@@ -79,7 +79,9 @@ export default class Game {
   }
 
   public clickBoard(row: number, col: number) {
+    const winner = this.checkWinner();
     if (this.cells[row][col] !== '') return;
+    if (winner !== null) return;
 
     this.cells[row][col] = this.bTurnX ? 'X' : 'O';
     this.board?.setCells(this.cells);
